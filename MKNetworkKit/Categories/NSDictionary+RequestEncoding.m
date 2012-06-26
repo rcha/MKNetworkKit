@@ -37,7 +37,10 @@
             [string appendFormat:@"%@=%@&", [key urlEncodedString], [((NSString*)value) urlEncodedString]];
         else if ([value isKindOfClass:[NSArray class]])
         {
-            [string appendFormat:@"%@=%@&", [key urlEncodedString], value];
+            for (id val in (NSArray*)value)
+            {
+                [string appendFormat:@"%@=%@&", [key urlEncodedString], val];
+            }
         }
         else
             [string appendFormat:@"%@=%@&", [key urlEncodedString], value];
